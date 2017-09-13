@@ -14,35 +14,38 @@ import javax.swing.text.MaskFormatter;
 
 //Cria a Janela
 public class PessoaFisica extends JFrame {
+	MaskFormatter formatTel = null;
+	MaskFormatter formatCel = null;
+	MaskFormatter formatRG = null;
+	MaskFormatter formatCPF = null;
+	MaskFormatter formatCEP = null;
+	JLabel lblCEP = new JLabel("CEP:");
+	JLabel lblCPF = new JLabel("CPF:");
+	JLabel lblRG = new JLabel("RG:");
+	JLabel lblCel = new JLabel("CEL.:");
+	JLabel lblTel = new JLabel("TEL.:");
+	JFormattedTextField txtTel = null;
+	JRadioButton[] rdnSex = new JRadioButton[2];
+	ButtonGroup grupo = new ButtonGroup();
 	
 	//NOME
 	JLabel lblNome = new JLabel("Nome:");
 	JTextField txtNome = new JTextField();
 	
 	//SEXO
-	JRadioButton[] rdnSex = new JRadioButton[2];
 	JLabel lblSex = new JLabel("Sexo:");
 	
 	//RG
-	MaskFormatter formatRG = null;
 	JTextField txtRG = new JTextField();
 	
 	//CPF
-	JLabel lblCPF = new JLabel("CPF:");
-	MaskFormatter formatCPF = null;
 	JTextField txtCPF = new JTextField();
 	
 	//TELEFONE
-	JFormattedTextField txtTel = null;
-	ButtonGroup grupo = new ButtonGroup();
-	JLabel lblTel = new JLabel("TEL.:");
-	MaskFormatter formatTel = null;
 	JLabel lblTelefone = new JLabel("TEL.:");
 	JTextField txtTelefone = new JTextField();
 	
 	//CELULAR
-	JLabel lblCel = new JLabel("CEL.:");
-	MaskFormatter formatCel = null;
 	JLabel lblCelular = new JLabel("CEL.:");
 	JTextField txtCelular = new JTextField();
 	
@@ -55,8 +58,6 @@ public class PessoaFisica extends JFrame {
 	JTextField txtBairro = new JTextField();
 	
 	//CEP
-	JLabel lblCEP = new JLabel("CEP:");
-	MaskFormatter formatCEP = null;
 	JTextField txtCEP = new JTextField();
 	
 	//CIDADE
@@ -103,7 +104,6 @@ public PessoaFisica(){
 	lblSex.setBounds(280, 90, 100, 20);
 	
 	//RG
-	JLabel lblRG = new JLabel("RG:");
 	paine.add(lblRG);
 	lblRG.setBounds(50, 70, 50, 20);
 	
