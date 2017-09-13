@@ -5,36 +5,44 @@ import java.awt.Container;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 //Cria a Janela
 public class PessoaFisica extends JFrame {
-	JRadioButton[] rdnSex = new JRadioButton[2];
-	ButtonGroup grupo = new ButtonGroup();
 	
 	//NOME
 	JLabel lblNome = new JLabel("Nome:");
 	JTextField txtNome = new JTextField();
 	
 	//SEXO
+	JRadioButton[] rdnSex = new JRadioButton[2];
 	JLabel lblSex = new JLabel("Sexo:");
 	
 	//RG
-	JLabel lblRG = new JLabel("RG:");
+	MaskFormatter formatRG = null;
 	JTextField txtRG = new JTextField();
 	
 	//CPF
 	JLabel lblCPF = new JLabel("CPF:");
+	MaskFormatter formatCPF = null;
 	JTextField txtCPF = new JTextField();
 	
 	//TELEFONE
+	JFormattedTextField txtTel = null;
+	ButtonGroup grupo = new ButtonGroup();
+	JLabel lblTel = new JLabel("TEL.:");
+	MaskFormatter formatTel = null;
 	JLabel lblTelefone = new JLabel("TEL.:");
 	JTextField txtTelefone = new JTextField();
 	
 	//CELULAR
+	JLabel lblCel = new JLabel("CEL.:");
+	MaskFormatter formatCel = null;
 	JLabel lblCelular = new JLabel("CEL.:");
 	JTextField txtCelular = new JTextField();
 	
@@ -48,6 +56,7 @@ public class PessoaFisica extends JFrame {
 	
 	//CEP
 	JLabel lblCEP = new JLabel("CEP:");
+	MaskFormatter formatCEP = null;
 	JTextField txtCEP = new JTextField();
 	
 	//CIDADE
@@ -78,44 +87,80 @@ public PessoaFisica(){
 	txtNome.setBounds(100, 40, 370, 25);
 	
 	//SEXO
-	rdnSex[0] = new JRadioButton("Feminino");
-	rdnSex[1] = new JRadioButton("Masculino");
+	rdnSex[0] = new JRadioButton("F");
+	rdnSex[1] = new JRadioButton("M");
 	
 	grupo.add(rdnSex[0]);
 	grupo.add(rdnSex[1]);
 	
-	rdnSex[0].setBounds(310, 90, 100, 20);
+	rdnSex[0].setBounds(360, 90, 60, 20);
 	paine.add(rdnSex[0]);
 	
-	rdnSex[1].setBounds(390, 90, 100, 20);
+	rdnSex[1].setBounds(420, 90, 60, 20);
 	paine.add(rdnSex[1]);
 	
 	paine.add(lblSex);
-	lblSex.setBounds(270, 90, 100, 20);
+	lblSex.setBounds(280, 90, 100, 20);
 	
 	//RG
+	JLabel lblRG = new JLabel("RG:");
 	paine.add(lblRG);
 	lblRG.setBounds(50, 70, 50, 20);
+	
+	try {
+		formatRG = new MaskFormatter("##.###.###.A");
+		txtRG = new JFormattedTextField(formatRG);
+	}catch (Exception ex){
+		ex.printStackTrace();
+	}
+	
 	paine.add(txtRG);
 	txtRG.setBounds(100, 70, 150, 25);
 	
 	//CPF
 	paine.add(lblCPF);
 	lblCPF.setBounds(50, 100, 50, 20);
+	
+	try {
+		formatCPF = new MaskFormatter("###.###.###-AA");
+		txtCPF = new JFormattedTextField(formatCPF);
+	}catch (Exception ex){
+		ex.printStackTrace();
+	}
+	
 	paine.add(txtCPF);
 	txtCPF.setBounds(100, 100, 150, 25);
 	
 	//TELEFONE
-	paine.add(lblTelefone);
-	lblTelefone.setBounds(50, 130, 50, 20);
-	paine.add(txtTelefone);
-	txtTelefone.setBounds(100, 130, 150, 25);
+	paine.add(lblTel);
+	lblTel.setBounds(50, 130, 50, 20);
 	
+	try {
+		formatTel = new MaskFormatter("(##)####-####");
+		txtTel = new JFormattedTextField(formatTel);
+	}catch (Exception ex){
+		ex.printStackTrace();
+	}
+	
+	
+	paine.add(txtTel);
+	txtTel.setBounds(100, 130, 150, 25);
+	
+
 	//CELULAR
 	paine.add(lblCelular);
 	lblCelular.setBounds(280, 130, 50, 20);
+	
+	try {
+		formatCel = new MaskFormatter("(##)#####-####");
+		txtCelular = new JFormattedTextField(formatCel);
+	}catch (Exception ex){
+		ex.printStackTrace();
+	}
+	
 	paine.add(txtCelular);
 	txtCelular.setBounds(320, 130, 150, 25);
+	
 	
 	//ENDEREÇO
 	paine.add(lblEnd);
@@ -132,6 +177,14 @@ public PessoaFisica(){
 	//CEP
 	paine.add(lblCEP);
 	lblCEP.setBounds(280, 230, 50, 20);
+	
+	try {
+		formatCEP = new MaskFormatter("#####-###");
+		txtCEP = new JFormattedTextField(formatCEP);
+	}catch (Exception ex){
+		ex.printStackTrace();
+	}
+	
 	paine.add(txtCEP);
 	txtCEP.setBounds(320, 230, 150, 25);
 	
